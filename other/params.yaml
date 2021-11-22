@@ -1,0 +1,20 @@
+preprocess:
+  rows: 1000
+  features: 
+    - Feature 1
+    - Feature 2
+    - Feature 3
+    - Feature 7
+    - Feature 8
+    - Feature 9
+
+split:
+  random_state: 42
+  test_size: 0.2
+  out_dir: data/train
+
+train:
+  colsample_bytree: 0.5
+  learning_rate: 0.05
+  max_depth: 5
+  n_estimators: 1000

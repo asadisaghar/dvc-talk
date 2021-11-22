@@ -1,0 +1,55 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py data/data.csv
+    deps:
+    - data/data.csv
+    - src/preprocess.py
+    params:
+    - preprocess.features
+    - preprocess.rows
+    outs:
+    - data/preprocessed.pkl
+    - data/cat_feats.yaml
+    - data/num_feats.yaml
+
+  split:
+    cmd: python src/split.py data/preprocessed.pkl data/cat_feats.yaml data/num_feats.yaml
+    deps:
+    - data/cat_feats.yaml
+    - data/num_feats.yaml
+    - data/preprocessed.pkl
+    - src/split.py
+    params:
+    - split.random_state
+    - split.test_size
+    outs:
+    - data/train
+
+  train:
+    cmd: python src/train.py data/train
+    deps:
+      - src/train.py
+      - data/train
+    params:
+      - train.colsample_bytree
+      - train.learning_rate
+      - train.max_depth
+      - train.n_estimators
+    outs:
+      - model.joblib
+
+  evaluate:
+    cmd: python src/evaluate.py data/train model.joblib scores.json preds.json
+    deps:
+      - src/evaluate.py
+      - data/train
+      - model.joblib
+    metrics:
+      - scores.json:
+          cache: false
+    plots:
+      - preds.json:
+          cache: false
+          x: y_true
+          y: y_perd
+    
