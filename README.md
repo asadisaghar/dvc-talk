@@ -18,4 +18,5 @@ Follow-along material for the Fagmandag at Inmeta-BAA, November 2021.
   
 - Voilà! Now you can follow along everything else in the talk or [DVC documentation](https://dvc.org/doc)
   
-![DVC cheatsheet](https://raw.githubusercontent.com/asadisaghar/dvc-talk/main/other/DVC_cheatsheet.webp )
+- [DVC cheatsheet](https://www.globalsqa.com/dvc-cheat-sheet/)
+![DVC cheatsheet](https://raw.githubusercontent.com/asadisaghar/dvc-talk/main/other/DVC_cheatsheet.webp)
